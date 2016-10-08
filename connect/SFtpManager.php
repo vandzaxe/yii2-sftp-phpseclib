@@ -71,10 +71,10 @@ class SFtpManager
         usort($list, function ($attr) {
             return ($attr["type"] == self::TYPE_DIR) ? false : true;
         });
-        foreach ($list as $element => $attr)
-            array_push($this->elements, (object)$attr);
-
-        array_shift($this->elements);
+        foreach ($list as $element => $attr){
+            if($attr['filename'] != '.' && $attr['filename'] != '..')
+               array_push($this->elements, (object)$attr);
+        }
         return $this->elements;
     }
 
