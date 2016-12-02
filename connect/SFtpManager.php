@@ -54,8 +54,7 @@ class SFtpManager
     public function connect($host, $login, $pass)
     {
         $this->host = $host;
-        $this->connect = new SFTP($this->host,
-            $this->settings['port'], $this->settings['timeout']);
+        $this->connect = new SFTP($this->host, $this->settings['port'], $this->settings['timeout']);
         $this->connect->login($login, $pass);
     }
 
