@@ -3,11 +3,9 @@
 namespace Apolon\sftp;
 
 use phpseclib\Net\SFTP;
-use phpseclib\Net\SSH2;
 use yii\base\Component;
 
-
-define('NET_SSH2_LOGGING', SSH2::LOG_REALTIME_FILE);
+define('NET_SFTP_LOGGING', NET_SFTP_LOG_COMPLEX);
 
 
 /**
@@ -49,7 +47,6 @@ class SFtpManager extends Component
      * @var SFTP
      */
     protected $connect;
-
 
     /**
      * @param $host
@@ -181,4 +178,5 @@ class SFtpManager extends Component
 
 
 }
+
 
