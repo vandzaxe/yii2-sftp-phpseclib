@@ -3,6 +3,7 @@
 namespace Apolon\sftp;
 
 use phpseclib\Net\SFTP;
+use yii\base\Component;
 
 
 //define('NET_SSH2_LOGGING', SSH2::LOG_REALTIME_FILE);
@@ -15,7 +16,7 @@ use phpseclib\Net\SFTP;
  *
  * @package Apolon
  */
-class SFtpManager
+class SFtpManager extends Component
 {
 
 
@@ -37,10 +38,12 @@ class SFtpManager
      * @var string
      */
     public $host;
+
     /**
      * @var array
      */
     public $elements = [];
+
     /**
      * @var SFTP
      */
@@ -54,7 +57,8 @@ class SFtpManager
     public function connect($host, $login, $pass)
     {
         $this->host = $host;
-        $this->connect = new SFTP($this->host, $this->settings['port'], $this->settings['timeout']);
+        $this->connect = new SFTP($this->host,
+            $this->settings['port'], $this->settings['timeout']);
         $this->connect->login($login, $pass);
     }
 
@@ -70,9 +74,9 @@ class SFtpManager
         usort($list, function ($attr) {
             return ($attr["type"] == self::TYPE_DIR) ? false : true;
         });
-        foreach ($list as $element => $attr){
-            if($attr['filename'] != '.' && $attr['filename'] != '..')
-               array_push($this->elements, (object)$attr);
+        foreach ($list as $element => $attr) {
+            if ($attr['filename'] != '.' && $attr['filename'] != '..')
+                array_push($this->elements, (object)$attr);
         }
         return $this->elements;
     }
@@ -84,10 +88,13 @@ class SFtpManager
      */
     public function __call($name, $param)
     {
-        if (!empty($param) && is_array($param))
-            return call_user_func_array([$this->connect, $name], $param);
+        if (method_exists($this->connect, $name)){
+            if (!empty($param) && is_array($param))
+                return call_user_func_array([$this->connect, $name], $param);
 
-        return $this->connect->$name();
+            return $this->connect->$name();
+        } else return parent::__call($name, $param);
+
     }
 
     /**
