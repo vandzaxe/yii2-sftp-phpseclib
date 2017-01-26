@@ -3,10 +3,11 @@
 namespace Apolon\sftp;
 
 use phpseclib\Net\SFTP;
+use phpseclib\Net\SSH2;
 use yii\base\Component;
 
 
-//define('NET_SSH2_LOGGING', SSH2::LOG_REALTIME_FILE);
+define('NET_SSH2_LOGGING', SSH2::LOG_REALTIME_FILE);
 
 
 /**
@@ -49,17 +50,18 @@ class SFtpManager extends Component
      */
     protected $connect;
 
+
     /**
      * @param $host
      * @param $login
      * @param $pass
+     * @return bool
      */
     public function connect($host, $login, $pass)
     {
         $this->host = $host;
-        $this->connect = new SFTP($this->host,
-            $this->settings['port'], $this->settings['timeout']);
-        $this->connect->login($login, $pass);
+        $this->connect = new SFTP($this->host, $this->settings['port'], $this->settings['timeout']);
+        return $this->connect->login($login, $pass);
     }
 
 
