@@ -106,11 +106,19 @@ class SFtpManager extends Component
     }
 
     /**
+     * @return array
+    */
+    public function getFiles()
+    {
+        return $this->getByProp('type', self::TYPE_FILE);
+    }
+
+    /**
      * @param $index
      * @param $value
      * @return array
      */
-    private function getByProp($index, $value)
+    protected function getByProp($index, $value)
     {
         $elements = [];
         foreach ($this->elements as $element) {
@@ -120,13 +128,7 @@ class SFtpManager extends Component
         return $elements;
     }
 
-    /**
-     * @return array
-     */
-    public function getFiles()
-    {
-        return $this->getByProp('type', self::TYPE_FILE);
-    }
+
 
 
     /**
@@ -143,7 +145,7 @@ class SFtpManager extends Component
 
         $archive->name = $archiveName;
         $archive->path = $this->realpath("./") . "/{$archiveName}";
-        $this->createCommand("tar -cf $archive->name $remotePathElement");
+        $this->execCommand("tar -cf $archive->name $remotePathElement");
 
         return $archive;
 
@@ -153,7 +155,7 @@ class SFtpManager extends Component
      * @param $command
      * @return string
      */
-    public function createCommand($command)
+    public function execCommand($command)
     {
         return $this->connect->exec($command);
     }
@@ -177,3 +179,4 @@ class SFtpManager extends Component
 
 
 }
+
