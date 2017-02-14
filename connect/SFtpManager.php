@@ -5,7 +5,7 @@ namespace Apolon\sftp;
 use phpseclib\Net\SFTP;
 use yii\base\Component;
 
-define('NET_SFTP_LOGGING', NET_SFTP_LOG_COMPLEX);
+define('NET_SFTP_LOGGING', 'NET_SFTP_LOG_COMPLEX');
 
 
 /**
