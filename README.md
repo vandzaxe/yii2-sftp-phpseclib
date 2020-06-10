@@ -4,14 +4,14 @@
 ```
 {
     "require": {
-      "apolon13/yii2-sftp-phpseclib": "dev-master"
+      "vandzaxe/yii2-sftp-phpseclib": "dev-master"
    }
 }
 ```
  ### or
  ###
 
->$ composer require apolon13/yii2-sftp-phpseclib
+>$ composer require vandzaxe/yii2-sftp-phpseclib
 
 ### USAGE
 ###
@@ -19,7 +19,7 @@
 'components' => [
       ...
       'sftp' => [
-          "class" => 'Apolon\sftp\SFtpManager',
+          "class" => 'Vandzaxe\sftp\SFtpManager',
           "settings"=>[
               'port'=>22,
               'timeout'=>10

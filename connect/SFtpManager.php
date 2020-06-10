@@ -13,7 +13,7 @@ define('NET_SFTP_LOGGING', 'NET_SFTP_LOG_COMPLEX');
  *
  * @mixin SFTP;
  *
- * @package Apolon
+ * @package Vandzaxe
  */
 class SFtpManager extends Component
 {
