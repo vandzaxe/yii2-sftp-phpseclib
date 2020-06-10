@@ -1,6 +1,6 @@
 <?php
 
-namespace Apolon\sftp;
+namespace Vandzaxe\sftp;
 
 use phpseclib\Net\SFTP;
 use yii\base\Component;
@@ -17,11 +17,7 @@ define('NET_SFTP_LOGGING', 'NET_SFTP_LOG_COMPLEX');
  */
 class SFtpManager extends Component
 {
-
-
     const TYPE_DIR = 2;
-
-
     const TYPE_FILE = 1;
 
 

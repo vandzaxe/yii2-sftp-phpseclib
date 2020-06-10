@@ -1,14 +1,14 @@
 {
-  "name": "apolon13/yii2-sftp-phpseclib",
+  "name": "vandzaxe/yii2-sftp-phpseclib",
   "minimum-stability": "dev",
   "description": "yii2 sftp ssh2 phpseclib",
   "keywords": ["yii2", "ssh2", "sftp", "phpseclib"],
-  "homepage": "https://github.com/apolon13/yii2-sftp-phpseclib",
+  "homepage": "https://github.com/vandzaxe/yii2-sftp-phpseclib",
   "type": "yii2-extension",
   "license": "MIT",
   "autoload": {
     "psr-4": {
-      "Apolon\\sftp\\": "connect/"
+      "Vandzaxe\\sftp\\": "connect/"
     }
   },
   "require": {
