@@ -67,7 +67,7 @@ class SFtpManager extends Component
     {
         $list = $this->connect->rawlist($dir, $recursive);
         usort($list, function ($attr) {
-            return ($attr["type"] == self::TYPE_DIR) ? false : true;
+            return ($attr["type"] == self::TYPE_DIR) ? 0 : 1;
         });
         foreach ($list as $element => $attr) {
             if ($attr['filename'] != '.' && $attr['filename'] != '..')
