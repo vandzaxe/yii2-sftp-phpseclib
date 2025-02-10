@@ -11,7 +11,7 @@ define('NET_SFTP_LOGGING', 'NET_SFTP_LOG_COMPLEX');
 /**
  * Class SFtpManager
  *
- * @mixin SFTP;
+ * @mixin SFTP
  *
  * @package Vandzaxe
  */
@@ -65,6 +65,8 @@ class SFtpManager extends Component
      */
     public function scanDir($dir = ".", $recursive = false)
     {
+        $this->elements = [];
+        
         $list = $this->connect->rawlist($dir, $recursive);
         usort($list, function ($attr) {
             return ($attr["type"] == self::TYPE_DIR) ? 0 : 1;
